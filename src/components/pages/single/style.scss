@@ -1,0 +1,110 @@
+.single {
+	padding: 40px 0px 50px 0px;
+	
+	.row {
+		div[class*="col-md"]{
+			&:nth-child(2){
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+
+				.content {
+					width: 85%;
+				}
+			}
+		}
+
+		@media only screen and (max-width: 768px) {
+			div[class*="col-md"]:nth-child(2) .content{
+				width: 100%;
+			}
+		}
+	}
+
+	.cardContent {
+		background-color: transparent;
+		border: 0px;
+
+		.img {
+			position: relative;
+
+			img {
+				background-color: #d9d9d9;
+				max-width: 100%;
+			}
+		}
+
+
+		.content {
+			min-height: auto;
+			padding: 20px 0px;
+
+			.title {
+				font-weight: 700;
+				font-size: 68px;
+				margin: 0px;
+				padding: 0px;
+				color: #1A1A1A;
+			}
+
+			.sort {
+				text-transform: uppercase;
+				color: #3852F7;
+				font-weight: 700;
+				font-size: 14px;
+				display: flex;
+				align-items: center;
+				text-decoration: none;
+				border: 0px;
+				background-color: transparent;
+				padding: 0px;
+				margin: 10px 0px;
+
+				svg {
+					margin-left: 10px;
+				}
+
+				&:hover, &:focus {
+					opacity: 0.5;
+				}
+			}
+
+			.questions{
+				h1 {
+					font-weight: 700;
+					font-size: 32px;
+					margin: 0px;
+					padding: 0px;
+					color: #000000;
+				}
+
+				h3 {
+					text-transform: uppercase;
+					color: #A4A4A4;
+					font-weight: 700;
+					font-size: 13px;
+					display: flex;
+					align-items: center;
+					text-decoration: none;
+					margin: 5px 0px;
+
+					svg {
+						margin-right: 16px;
+					}
+				}
+
+				p {
+					font-family: Merriweather Sans;
+					font-weight: 300;
+					font-size: 17px;
+					line-height: 30px;
+					color: #333333;
+
+					&::first-letter{
+						text-transform: uppercase;
+					}
+				}
+			}
+		}
+	}
+}

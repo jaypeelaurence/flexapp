@@ -1,0 +1,59 @@
+.listing {
+	padding: 40px 0px 50px 0px;
+
+	.row {
+		div[class*="col-md"]{
+			margin-bottom: 50px;
+
+			&:nth-last-child(1), &:nth-last-child(2){
+				margin-bottom: 0px;
+			}
+		}
+	}
+
+	.card {
+		background-color: transparent;
+		border: 0px;
+
+		.img {
+			position: relative;
+
+			img {
+				background-color: #d9d9d9;
+				max-width: 100%;
+			}
+		}
+
+		.content {
+			min-height: auto;
+			padding: 20px 0px;
+
+			.title {
+				font-weight: 700;
+				font-size: 26px;
+				margin: 30px 0px;
+				padding: 0px;
+				min-height: 62px;
+				color: #1A1A1A;
+			}
+
+			a {
+				text-transform: uppercase;
+				color: #3852F7;
+				font-weight: 700;
+				font-size: 14px;
+				display: flex;
+				align-items: center;
+				text-decoration: none;
+
+				svg {
+					margin-right: 16px;
+				}
+
+				&:hover, &:focus {
+					opacity: 0.5;
+				}
+			}
+		}
+	}
+}

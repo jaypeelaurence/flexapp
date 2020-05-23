@@ -1,26 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Template from "./components/template";
+
+import { Listing, Single, Error } from "./components/pages";
+
+const App = (props) => {
+  	const base = "/";
+  	const routes = [
+		{	
+			name: "Home",
+			path: "/home",
+			component: Listing
+		},{	
+			name: "Page",
+			path: "/page/:slug",
+			component: Single
+		}
+  	];
+
+	return (
+		<Router basename={base}>
+			<Template>
+				<Switch>
+					<Route exact path={"/"} render={(routerProps) => (
+						<Listing {...routerProps}/>
+					)}/>
+
+					{
+						routes.map((route, key) => (
+							<Route key={key} path={route.path} render={(routerProps) => (
+								<route.component {...routerProps}/>
+							)}/>
+						))
+					}
+
+					<Route component={Error}/>
+				</Switch>
+			</Template>
+		</Router>
+	);
 }
 
 export default App;

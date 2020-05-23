@@ -1,0 +1,21 @@
+.errorPage {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 80vh;
+	transition: 0.3s;
+
+	.heading {
+		text-align: center;
+		font-size: 68px;
+		font-weight: 700;
+
+		span {
+			font-weight: 400;
+		}
+
+		@media only screen and (max-width: 768px) {
+			font-size: 48px;
+		}
+	}
+}
