@@ -70,6 +70,16 @@
 			}
 
 			.questions{
+				margin-top: 30px;
+
+				div {
+					margin-bottom: 30px;
+
+					&:nth-last-child(1){
+						margin-bottom: 0px;
+					}
+				}
+
 				h1 {
 					font-weight: 700;
 					font-size: 32px;
