@@ -10,5 +10,4 @@ Requirements:
 4. After installation, you can now start the project.
 	$ npm start
 5. After running you can visit the site to your localhost environtment.
-	- usually it react projects run on port 3000
-		(eg. http://localhost:3000)
+	- usually it react projects run on port 3000 (eg. http://localhost:3000)
