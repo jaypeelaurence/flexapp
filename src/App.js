@@ -6,7 +6,7 @@ import Template from "./components/template";
 
 import { Listing, Single, Error } from "./components/pages";
 
-const App = (props) => {
+const App = props => {
   	const base = "/";
   	const routes = [
 		{	

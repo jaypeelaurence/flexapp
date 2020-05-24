@@ -5,7 +5,7 @@ import { Footer } from './footer';
 
 import './style.scss';
 
-const Template = (props) => (
+const Template = props => (
 	<div className={"wrapper"}>
 		<Navbar/>
 		<main className={"content"}>

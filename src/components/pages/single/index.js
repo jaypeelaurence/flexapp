@@ -11,64 +11,42 @@ export default class Single extends Component {
 		this.state = {
 			load: null,
 			feed: {},
-			sort: 0
+			status: null
 		}
 	}
 
-	request = async () => { // simulates fetch API request;
+	request = async () => {
 		let res;
 
-		try{
-			res = await require('./feed/data').find(data => data.slug === this.props.match.params.slug);
-		}catch(err){
-			res = err;
-		}
+		res = await require('./feed/data').filter(data => data.slug === this.props.match.params.slug);  // simulates fetch API request;
+
+		if(res.err) throw new Error("something is wrong..."); // if api has an error response.
 
 		return res;
-
 	}
 
-	fetchFeed = () => this.request()
-	.then((res) => setTimeout(() => (
-		this.setState({
-			feed: res ? {
-				...res,
-				questions: res.questions.map((questions, key) => ({
-					...questions,
-					index: key + 1,
-					date: new Date(questions.date).getTime()
-				}))
-			} : {},
-			load: res ? 1 : 2
-		})
-	), 300))
-	.catch(err => (
-		this.setState({
-			load: 2
-		})
-	))
-
-	sort = () => this.setState(prevState => ({
-		feed: {
-			...prevState.feed,
-			questions: this.state.feed.questions.map((questions, key) => ({
-				...questions,
-				date: new Date(questions.date).getTime()
-			})).sort((a, b) => {
-				let sort = b.date + a.date;
-
-				if(!this.state.sort){
-					sort = b.date - a.date;
-				}
-
-				return sort;
-			})
-		},
-		sort: this.state.sort ? 0 : 1
-	}))
-
 	componentDidMount = () => {
-		this.initial = this.fetchFeed();
+		this.initial = this.request()
+		.then(res => setTimeout(() => (
+			this.setState({
+				feed: res.length ? {
+					...res[0],
+					questions: res[0].questions.map((questions, key) => ({
+						...questions,
+						index: key + 1,
+						date: new Date(questions.date).getTime()
+					}))
+				} : {},
+				load: res.length ? 1 : 2,
+				status: res.length ? null : "feed not found..."
+			})
+		), 300))
+		.catch(err => (
+			this.setState({
+				load: 2,
+				status: err.message
+			})
+		))
 	}
 
 	componentWillUnmount = () => {
@@ -82,9 +60,11 @@ export default class Single extends Component {
 				this.state.load === 2 ? 
 				<div className={"centered"}>
 					<h1 className={"heading"}>
-						Feed not found.
+						{
+							!this.state.status ? null : this.state.status
+						}
 					</h1>
-				</div> : <Content sort={[this.state.sort, this.sort]} {...this.state.feed} />
+				</div> : <Content {...this.state.feed} />
 			}
 		</div>
 	)

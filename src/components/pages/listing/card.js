@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-const Card = (props) => {
+const Card = props => {
 	const [img, setImage] = useState('./img');
 
+	const loadImage = async () => await setImage(require('./img/' + props.thumb)); // simulates fetching image;
+
 	useEffect(() => {
-		const initialImage = (bool) => !bool ? null : setImage(require('./img/' + props.thumb)); // simulates fetching image;
+		loadImage();
 
-		initialImage(true);
-
-		return () => initialImage(false);
+		return () => loadImage();
 	})
 
 	return (

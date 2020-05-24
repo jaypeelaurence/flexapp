@@ -10,37 +10,36 @@ export default class Listing extends Component {
 
 		this.state = {
 			load: null,
-			feed: []
+			feed: [],
+			status: null
 		}
 	}
 
-	request = async () => { // simulates fetch API request;
+	request = async () => {
 		let res;
 
-		try{
-			res = await require('./feed/data');
-		}catch(err){
-			res = err;
-		}
+		res = await require('./feed/data'); // simulates fetch API request;
+
+		if(res.err) throw new Error("something is wrong..."); // if api has an error response.
 
 		return res;
 	}
 
-	fetchFeed = () => this.request()
-	.then((res) => setTimeout(() => (
-		this.setState({
-			feed: res,
-			load: res.length ? 1 : 2
-		})
-	), 300))
-	.catch(err => (
-		this.setState({
-			load: 3
-		})
-	))
-
 	componentDidMount = () => {
-		this.initial = this.fetchFeed();
+		this.initial = this.request()
+		.then(res => setTimeout(() => (
+			this.setState({
+				feed: res,
+				load: res.length ? 1 : 2,
+				status: res.length ? null : "no feeds available..."
+			})
+		), 300))
+		.catch(err => (
+			this.setState({
+				load: 2,
+				status: err.message
+			})
+		))
 	}
 
 	componentWillUnmount = () => {
@@ -53,7 +52,9 @@ export default class Listing extends Component {
 				!this.state.load ? null : this.state.load === 2 ? 
 				<div className={"centered"}>
 					<h1 className={"heading"}>
-						No feeds avaiable.
+						{
+							!this.state.status ? null : this.state.status
+						}
 					</h1>
 				</div> : 
 				<div className={"row"}>
