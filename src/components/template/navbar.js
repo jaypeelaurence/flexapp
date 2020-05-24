@@ -10,8 +10,8 @@ const Navbar = _ => {
 		load: null
 	});
 
-	useEffect(() => {
- 		const handleResize = () => setWidth(window.innerWidth)
+	useEffect( _ => {
+ 		const handleResize = _ => setWidth(window.innerWidth)
 		const initialImage = (data = null) => {
 			if(data && logo.changed !== data.changed){
 				if(data.load){
@@ -42,14 +42,12 @@ const Navbar = _ => {
 				img: require('./img/adrenalin.svg'),
 				changed: logo.change ? false : true
 			});
-		}else{
-			initialImage({
-				img: require('./img/adrenalin_blk.svg'),
-				changed: logo.change ? false : true
-			});
 		}
 
-		return () => ((window.removeEventListener('resize', handleResize), initialImage({img: './img', changed: false})))
+		return _ => ((
+			window.removeEventListener('resize', handleResize),
+			initialImage({img: './img', changed: false})
+		));
 	})
 
 	const navs = [
