@@ -5,6 +5,12 @@
 	min-height: 80vh;
 	transition: 0.3s;
 
+	&:after {
+		content: '';
+		min-height: inherit;
+		font-size: 0;
+	}
+
 	.heading {
 		text-align: center;
 		font-size: 68px;

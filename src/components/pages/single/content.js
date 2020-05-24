@@ -26,7 +26,7 @@ const Card = (props) => {
 		<article className={"cardContent"}>
 			<Helmet title={`ADRENALIN - ${props.title}`} />
 			<div className={"row"}>
-				<div className={"col-md-6"}>
+				<div className={["col-md-6", "custCol"].join(" ")}>
 					<div className={"img"}>
 						<LazyLoadImage src={img} effect={"black-and-white"} alt={`${props.title} - ${props.tag}`} height={img.height} width={img.width} placeholder={null} />
 						<div className={"tag"}>
@@ -35,7 +35,7 @@ const Card = (props) => {
 						</div>
 					</div>
 				</div>
-				<div className={"col-md-6"}>
+				<div className={["col-md-6", "custCol"].join(" ")}>
 					<div className={"content"}>
 						<h1 className={"title"}>{props.title}</h1>
 						<button onClick={props.sort[1]} className={"sort"}>

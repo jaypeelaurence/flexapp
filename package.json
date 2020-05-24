@@ -18,7 +18,7 @@
     "react-helmet": "^6.0.0",
     "react-lazy-load-image-component": "^1.4.3",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "^3.4.1"
   },
   "scripts": {
     "start": "react-app-rewired start",

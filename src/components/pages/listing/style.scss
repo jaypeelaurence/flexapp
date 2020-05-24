@@ -24,9 +24,14 @@
 		.img {
 			position: relative;
 
-			img {
+			span.lazy-load-image-background {
+				display: block !important;
+				width: 100%;
 				background-color: #d9d9d9;
-				max-width: 100%;
+
+				img {
+					width: 100% !important;
+				}
 			}
 		}
 
