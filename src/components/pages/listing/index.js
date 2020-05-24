@@ -15,7 +15,7 @@ export default class Listing extends Component {
 		}
 	}
 
-	request = async () => {
+	request = async _ => {
 		let res;
 
 		res = await require('./feed/data'); // simulates fetch API request;
@@ -25,9 +25,9 @@ export default class Listing extends Component {
 		return res;
 	}
 
-	componentDidMount = () => {
+	componentDidMount = _ => {
 		this.initial = this.request()
-		.then(res => setTimeout(() => (
+		.then(res => setTimeout( _ => (
 			this.setState({
 				feed: res,
 				load: res.length ? 1 : 2,
@@ -42,7 +42,7 @@ export default class Listing extends Component {
 		))
 	}
 
-	componentWillUnmount = () => {
+	componentWillUnmount = _ => {
 		this.initial = null;
 	}
 

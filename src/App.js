@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Template from "./components/template";
+import Template from './components/template';
 
-import { Listing, Single, Error } from "./components/pages";
+import { Listing, Single, Error } from './components/pages';
 
 const App = props => {
   	const base = "/";

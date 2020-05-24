@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -8,12 +8,10 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 const Card = props => {
 	const [img, setImage] = useState('./img');
 
-	const loadImage = async () => await setImage(require('./img/' + props.thumb)); // simulates fetching image;
+	const loadImage = async _ => await setImage(require('./img/' + props.thumb)); // simulates fetching image from api
 
 	useEffect(() => {
 		loadImage();
-
-		return () => loadImage();
 	})
 
 	return (

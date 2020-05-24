@@ -5,12 +5,10 @@ import './style.scss';
 const Error = () => {
 	const [state, setState] = useState(false);
 
-	const loadPage = () => setState(true);
+	const loadPage = _ => setState(true);
 
 	useEffect(() => {
 		loadPage();
-
-		return () => (loadPage());
 	})
 
 	return (

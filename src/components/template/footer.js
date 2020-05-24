@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import logo from "./img/adrenalin_blk.svg";
+import logo from './img/adrenalin_blk.svg';
 
-const Footer = () => {
+const Footer = _ => {
 	const navs = [
 		{	
 			name: "Privacy",

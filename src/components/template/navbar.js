@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = _ => {
 	const [width, setWidth] = useState(window.innerWidth)
 	const [logo, setLogo] = useState({
 		img: null,

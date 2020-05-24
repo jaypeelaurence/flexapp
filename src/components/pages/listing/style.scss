@@ -1,5 +1,5 @@
 .listing {
-	padding: 50px 15px 50px 15px;
+	padding: 50px 15px;
 
 	.row {
 		div[class*="col-md"]{
@@ -24,7 +24,7 @@
 		.img {
 			position: relative;
 
-			span.lazy-load-image-background {
+			.lazy-load-image-background {
 				display: block !important;
 				width: 100%;
 				background-color: #d9d9d9;
@@ -62,7 +62,7 @@
 					margin-bottom: 2px;
 				}
 
-				&:hover, &:focus {
+				&:hover {
 					opacity: 0.5;
 				}
 			}

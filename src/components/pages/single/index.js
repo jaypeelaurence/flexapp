@@ -15,7 +15,7 @@ export default class Single extends Component {
 		}
 	}
 
-	request = async () => {
+	request = async _ => {
 		let res;
 
 		res = await require('./feed/data').filter(data => data.slug === this.props.match.params.slug);  // simulates fetch API request;
@@ -25,9 +25,9 @@ export default class Single extends Component {
 		return res;
 	}
 
-	componentDidMount = () => {
+	componentDidMount = _ => {
 		this.initial = this.request()
-		.then(res => setTimeout(() => (
+		.then(res => setTimeout( _ => (
 			this.setState({
 				feed: res.length ? {
 					...res[0],
@@ -49,7 +49,7 @@ export default class Single extends Component {
 		))
 	}
 
-	componentWillUnmount = () => {
+	componentWillUnmount = _ => {
 		this.initial = null;
 	}
 
