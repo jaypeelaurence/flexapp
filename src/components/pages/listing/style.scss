@@ -1,12 +1,18 @@
 .listing {
-	padding: 40px 0px 50px 0px;
+	padding: 50px 0px 50px 0px;
 
 	.row {
 		div[class*="col-md"]{
-			margin-bottom: 50px;
+			margin-bottom: 65px;
 
 			&:nth-last-child(1), &:nth-last-child(2){
-				margin-bottom: 0px;
+				margin-bottom: 30px;
+			}
+		}
+
+		@media only screen and (max-width: 768px) {
+			div[class*="col-md"]:nth-last-child(2) {
+				margin-bottom: 65px;
 			}
 		}
 	}
@@ -26,12 +32,12 @@
 
 		.content {
 			min-height: auto;
-			padding: 20px 0px;
+			padding: 5px 0px;
 
 			.title {
 				font-weight: 700;
 				font-size: 26px;
-				margin: 30px 0px;
+				margin: 25px 0px;
 				padding: 0px;
 				min-height: 62px;
 				color: #1A1A1A;
@@ -48,6 +54,7 @@
 
 				svg {
 					margin-right: 16px;
+					margin-bottom: 2px;
 				}
 
 				&:hover, &:focus {

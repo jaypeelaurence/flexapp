@@ -19,23 +19,23 @@ export default class Listing extends Component {
 
 		try{
 			res = await require('./feed/data');
-
-			return res;
 		}catch(err){
-			return err;
+			res = err;
 		}
+
+		return res;
 	}
 
 	fetchFeed = () => this.request()
 	.then((res) => setTimeout(() => (
 		this.setState({
 			feed: res,
-			load: 1
+			load: res.length ? 1 : 2
 		})
 	), 300))
 	.catch(err => (
 		this.setState({
-			load: 2
+			load: 3
 		})
 	))
 
@@ -50,7 +50,7 @@ export default class Listing extends Component {
 	render = () => (
 		<div className={["container", "listing", this.state.load ? "loaded" : "unloaded"].join(" ")}>
 			{
-				this.state.load === 2 ? 
+				!this.state.load ? null : this.state.load === 2 ? 
 				<div className={"centered"}>
 					<h1 className={"heading"}>
 						No feeds avaiable.

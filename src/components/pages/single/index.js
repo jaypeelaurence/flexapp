@@ -19,12 +19,13 @@ export default class Single extends Component {
 		let res;
 
 		try{
-			res = await require('./feed/data').find(data => data.slug === this.props.match.params.slug)
-
-			return res;
+			res = await require('./feed/data').find(data => data.slug === this.props.match.params.slug);
 		}catch(err){
-			return err;
+			res = err;
 		}
+
+		return res;
+
 	}
 
 	fetchFeed = () => this.request()

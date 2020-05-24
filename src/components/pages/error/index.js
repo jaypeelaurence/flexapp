@@ -1,33 +1,25 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './style.scss';
 
-export default class Error extends Component {
-	constructor(props){
-		super(props);
+const Error = () => {
+	const [state, setState] = useState({
+		load: null
+	});
 
-		this.state = {
-			load: null
-		}
-	}
+	useEffect(() => {
+		setState({load: 1})
 
-	componentDidMount = () => {
-		this.initial = setTimeout(() => (
-			this.setState({
-				load: 1
-			})
-		), 300)
-	}
+		return () => setState({load: null});
+	}, [])
 
-	componentWillUnmount = () => {
-		this.initial = null;
-	}
-
-	render = () => (
-		<div className={["container", "errorPage", this.state.load ? "loaded" : "unloaded"].join(" ")}>
+	return (
+		<div className={["container", "errorPage", state.load ? "loaded" : "unloaded"].join(" ")}>
 			<h1 className={"heading"}>
 				Error: <span>Page not found.</span>
 			</h1>
 		</div>
 	)
 }
+
+export default Error;
