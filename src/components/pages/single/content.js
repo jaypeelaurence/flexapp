@@ -19,7 +19,7 @@ const Content = props => {
 		return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
 	}
 
-	const sort = (state) => setData({
+	const sort = state => setData({
 		value: {
 			...data.value,
 			questions: data.value.questions.map((questions, key) => ({
