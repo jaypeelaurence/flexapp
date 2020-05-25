@@ -33,7 +33,7 @@ export default class Single extends Component {
 					...res[0],
 					questions: res[0].questions.map((questions, key) => ({
 						...questions,
-						index: key + 1,
+						index: ++key,
 						date: new Date(questions.date).getTime()
 					}))
 				} : {},

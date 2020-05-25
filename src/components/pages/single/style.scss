@@ -75,24 +75,33 @@
 			}
 
 			.sort {
-				text-transform: uppercase;
-				color: #3852F7;
-				font-weight: 700;
-				font-size: 14px;
 				display: flex;
-				align-items: center;
-				text-decoration: none;
-				border: 0px;
-				background-color: transparent;
-				padding: 0px;
-				margin: 10px 0px;
 
-				svg {
-					margin-left: 12px;
+				button {	
+					text-transform: uppercase;
+					color: #3852F7;
+					font-weight: 700;
+					font-size: 14px;
+					display: flex;
+					align-items: center;
+					text-decoration: none;
+					border: 0px;
+					background-color: transparent;
+					padding: 0px;
+					margin: 10px 0px;
+
+					svg {
+						margin-left: 12px;
+						transition: 0.25s;
+					}
+
+					&:hover {
+						opacity: 0.5;
+					}
 				}
 
-				&:hover {
-					opacity: 0.5;
+				.rot {
+					transform: rotate(360deg);
 				}
 			}
 
