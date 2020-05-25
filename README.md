@@ -13,3 +13,5 @@ Requirements:
 	- usually it react projects run on port 3000 (eg. http://localhost:3000)
 6. To compile the Web Application.
 	$ npm run build
+7. After building the application you can serve your website by on your local environment.
+	- usually it react projects run on port 5000 (eg. http://localhost:5000)
