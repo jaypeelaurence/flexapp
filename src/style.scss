@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&family=Roboto:wght@400;700&display=swap');
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #F5F5F5 !important;
+	font-family: Roboto;
+	color: #000000;
+
+	a, button {
+		outline: 0px !important;
+		transition: 0.2s;
+	}
+
+	.container {
+		max-width: 1392px;
+	}
+}
