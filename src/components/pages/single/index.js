@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Helmet } from 'react-helmet';
+
 import Content from './content';
 
 import './style.scss';
@@ -53,7 +55,7 @@ export default class Single extends Component {
 		this.initial = null;
 	}
 
-	render = () => (
+	render = _ => (
 		<div className={["container", "single", this.state.load ? "loaded" : "unloaded"].join(" ")}>
 			{
 				!this.state.load ? null : 
@@ -64,7 +66,11 @@ export default class Single extends Component {
 							!this.state.status ? null : this.state.status
 						}
 					</h1>
-				</div> : <Content {...this.state.feed} />
+				</div> : 
+				<div>
+					<Helmet title={`ADRENALIN - ${this.state.feed.title}`} />
+					<Content {...this.state.feed} />
+				</div>
 			}
 		</div>
 	)

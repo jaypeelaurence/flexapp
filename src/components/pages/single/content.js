@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { Helmet } from 'react-helmet';
-
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
@@ -64,7 +62,6 @@ const Content = props => {
 	return (
 		!data.value ? null : 
 		<article className={"cardContent"}>
-			<Helmet title={`ADRENALIN - ${data.value.title}`} />
 			<div className={"row"}>
 				<div className={["col-md-6", "custCol"].join(" ")}>
 					<div className={"img"}>

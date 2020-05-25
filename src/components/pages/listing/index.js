@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Helmet } from 'react-helmet';
+
 import Card from './card';
 
 import './style.scss';
@@ -46,8 +48,9 @@ export default class Listing extends Component {
 		this.initial = null;
 	}
 
-	render = () => (
+	render = _ => (
 		<div className={["container", "listing", this.state.load ? "loaded" : "unloaded"].join(" ")}>
+			<Helmet title={`ADRENALIN - Listing`} />
 			{
 				!this.state.load ? null : this.state.load === 2 ? 
 				<div className={"centered"}>
