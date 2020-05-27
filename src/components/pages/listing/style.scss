@@ -14,6 +14,10 @@
 			div[class*="col-md"]:nth-last-child(2) {
 				margin-bottom: 65px;
 			}
+
+			div[class*="col-md"]:nth-last-child(1) {
+				margin-bottom: 20px;
+			}
 		}
 	}
 
@@ -44,22 +48,26 @@
 				color: #1A1A1A;
 			}
 
-			a {
-				text-transform: uppercase;
-				color: #3852F7;
-				font-weight: 700;
-				font-size: 13px;
-				display: flex;
-				align-items: center;
-				text-decoration: none;
+			.link {
+				display: inline-block;
+
+				a {
+					text-transform: uppercase;
+					color: #3852F7;
+					font-weight: 700;
+					font-size: 13px;
+					display: inline-block;
+					align-items: center;
+					text-decoration: none;
+
+					&:hover {
+						opacity: 0.5;
+					}
+				}
 
 				svg {
 					margin-right: 16px;
 					margin-bottom: 2px;
-				}
-
-				&:hover {
-					opacity: 0.5;
 				}
 			}
 		}
