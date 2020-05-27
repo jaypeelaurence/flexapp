@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Helmet } from 'react-helmet';
 
@@ -6,72 +6,75 @@ import Content from './content';
 
 import './style.scss';
 
-export default class Single extends Component {
-	constructor(props){
-		super(props);
+const Single = props => {
+	const [state, setState] = useState({
+		data: null,
+		load: null,
+		status: ""
+	});
 
-		this.state = {
-			load: null,
-			feed: {},
-			status: null
-		}
-	}
+	const getImage = img => require('./img/' + img);
 
-	request = async _ => {
+	const initial = async _ => {
 		let res;
 
-		res = await require('./feed/data').filter(data => data.slug === this.props.match.params.slug);  // simulates fetch API request;
+		if(!state.load){
+			let feed = await require('./feed/data'); // simulates fetch API request;
 
-		if(res.err) throw new Error("something is wrong..."); // if api has an error response.
+			if(feed.err) throw new Error("something is wrong..."); // if api has an error response.
+
+			feed = feed.map(data => ({
+				...data,
+				image: getImage(data.image)
+			})).filter(data => data.slug === props.match.params.slug);
+
+			if(!feed.length){
+				throw new Error("no feeds available..."); // if api has an error response.
+			}
+
+			if(feed.length >= 2){
+				throw new Error("something is wrong..."); // if api has an error response.
+			}
+
+			res = feed[0];
+		}
 
 		return res;
 	}
 
-	componentDidMount = _ => {
-		this.initial = this.request()
-		.then(res => setTimeout( _ => (
-			this.setState({
-				feed: res.length ? {
-					...res[0],
-					questions: res[0].questions.map((questions, key) => ({
-						...questions,
-						index: ++key,
-						date: new Date(questions.date).getTime()
-					}))
-				} : {},
-				load: res.length ? 1 : 2,
-				status: res.length ? null : "feed not found..."
-			})
-		), 300))
-		.catch(err => (
-			this.setState({
-				load: 2,
-				status: err.message
-			})
-		))
-	}
+	useEffect(() => {
+		initial()
+		.then(res => !res ? null : setState({
+			...state,
+			data: res,
+			load: 1
+		})).catch(err => setState({
+			load: 2,
+			status: err.message
+		}))
+	})
 
-	componentWillUnmount = _ => {
-		this.initial = null;
-	}
-
-	render = _ => (
-		<div className={["container", "single", this.state.load ? "loaded" : "unloaded"].join(" ")}>
+	return (
+		<div className={["container", "single", state.load ? "loaded" : "unloaded"].join(" ")}>
 			{
-				!this.state.load ? null : 
-				this.state.load === 2 ? 
+				!state.load ? null : 
+				state.load === 2 ? 
 				<div className={"centered"}>
 					<h1 className={"heading"}>
 						{
-							!this.state.status ? null : this.state.status
+							!state.status ? null : state.status
 						}
 					</h1>
 				</div> : 
 				<div>
-					<Helmet title={`ADRENALIN - ${this.state.feed.title}`} />
-					<Content {...this.state.feed} />
+					<Helmet title={`ADRENALIN - ${state.data.title}`} />
+					<Content data={state.data} />
 				</div>
 			}
 		</div>
 	)
 }
+
+export default Single;
+
+

@@ -5,16 +5,20 @@ import { Helmet } from 'react-helmet';
 import './style.scss';
 
 const Error = _ => {
-	const [state, setState] = useState(false);
+	const [state, setState] = useState({
+		load: null
+	});
 
-	const loadPage = _ => setState(true);
+	const loadPage = _ => setState({
+		load: true
+	});
 
 	useEffect( _ => {
 		loadPage();
-	})
+	}, [])
 
 	return (
-		<div className={["container", "errorPage", state ? "loaded" : "unloaded"].join(" ")}>
+		<div className={["container", "errorPage", state.load ? "loaded" : "unloaded"].join(" ")}>
 			<Helmet title={`ADRENALIN - Error`} />
 			<h1 className={"heading"}>
 				Error: <span>Page not found.</span>
