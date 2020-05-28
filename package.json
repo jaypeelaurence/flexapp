@@ -2,6 +2,7 @@
   "name": "flexapp",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://jaypeelaurence.github.io/flexapp",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.22",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
@@ -24,6 +25,7 @@
     "start": "react-app-rewired start",
     "serve": "serve -s build",
     "build": "react-app-rewired build",
+    "deploy": "gh-pages -d build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
@@ -46,6 +48,7 @@
   "devDependencies": {
     "babel-plugin-root-import": "^6.5.0",
     "customize-cra": "^0.9.1",
+    "gh-pages": "^2.2.0",
     "react-app-rewired": "^2.1.6",
     "serve": "^11.3.1"
   }
