@@ -8,7 +8,7 @@ import './style.scss';
 const Template = props => (
 	<div className={"wrapper"}>
 		<Navbar/>
-		<main className={"content"}>
+		<main className={["content", "mainContent"].join(" ")}>
 			{props.children}
 		</main>
 		<Footer />
